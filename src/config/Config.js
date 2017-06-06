@@ -14,7 +14,7 @@ class Config extends React.Component {
     const ctx = canvas.getContext('2d')
     const webgl = this.webGl(canvas)
     const gl = canvas.getContext("webgl")
-    console.log(canvas,ctx,"END")
+    console.log(gl,"END")
     // Sets Canvas Resolution HDPI on mobile devices
     const setResolution = new HiRes({canvas: canvas, ctx: ctx})
     setResolution.init()
