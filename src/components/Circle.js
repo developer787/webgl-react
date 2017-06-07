@@ -1,4 +1,3 @@
-const log = i => console.log(i) // log(info) instead of console.log(info)
 import React from 'react'
 
 
