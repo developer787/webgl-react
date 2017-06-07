@@ -6,7 +6,7 @@ class HiRes extends React.Component {
     this.result = {}
   }
   init() {
-    const ctx = this.props.ctx
+    const ctx = this.props.webgl ? this.props.webgl : this.props.ctx
     const canvas = this.props.canvas
     const PIXEL_RATIO = (function() {
       const dpr = window.devicePixelRatio || 1,

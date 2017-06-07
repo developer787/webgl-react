@@ -7,16 +7,17 @@ class Config extends React.Component {
   constructor(props){
     super(props)
     this.result = {}
+    this.canvas = this.props.canvas
+    this.webgl = this.props.webgl ? this.props.webgl : null
   }
   init() {
     const audio = new(window.AudioContext || window.webkitAudioContext)()
-    const canvas = this.props
+    const canvas = this.canvas
     const ctx = canvas.getContext('2d')
-    const webgl = this.webGl(canvas)
-    const gl = canvas.getContext("webgl")
-    console.log(gl,"END")
+    const webgl = this.props.webgl
+    console.log(webgl,"END")
     // Sets Canvas Resolution HDPI on mobile devices
-    const setResolution = new HiRes({canvas: canvas, ctx: ctx})
+    const setResolution = new HiRes({canvas: canvas, ctx: ctx, webgl: webgl})
     setResolution.init()
     const width = setResolution.result.width
     const height = setResolution.result.height
@@ -25,6 +26,7 @@ class Config extends React.Component {
     keyboard.keyDownHandler().keyUpHandler()
     this.result = {
       canvas: canvas,
+      webgl: webgl,
       ctx: ctx,
       audio: audio,
       width: width,
