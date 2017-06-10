@@ -15,7 +15,6 @@ class Config extends React.Component {
     const canvas = this.canvas
     const ctx = canvas.getContext('2d')
     const webgl = this.props.webgl
-    console.log(webgl,"END")
     // Sets Canvas Resolution HDPI on mobile devices
     const setResolution = new HiRes({canvas: canvas, ctx: ctx, webgl: webgl})
     setResolution.init()
@@ -34,21 +33,21 @@ class Config extends React.Component {
       keyboard: keyboard
     }
   }
-  webGl(canvas){
-        let gl = null
-        try {
-          gl = canvas.getContext("experimental-webgl")
-          console.log(gl)
-        }
-        catch(e) {
+  // webGl(canvas){
+  //       let gl = null
+  //       try {
+  //         gl = canvas.getContext("experimental-webgl")
+  //         console.log(gl)
+  //       }
+  //       catch(e) {
           
-        }
-        // If we don't have a GL context, give up now
-        if (!gl) {
-          alert("Unable to initialize WebGL. Your browser may not support it.");
-        }
-        return gl
-  }
+  //       }
+  //       // If we don't have a GL context, give up now
+  //       if (!gl) {
+  //         alert("Unable to initialize WebGL. Your browser may not support it.");
+  //       }
+  //       return gl
+  //}
 }
 
 export default Config
