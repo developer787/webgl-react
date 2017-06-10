@@ -14,9 +14,11 @@ class Canvas extends React.Component {
   // WebGL configuration
   initBuffers(gl){
     const triangleVertices = [
-      0.0, 0.5,
-      -0.5, -0.5,
-      0.5, -0.5
+  //  X    Y        R   G   B
+      0.0,  0.5,    1.0,0.0,0.0,
+     -0.5, -0.0,    0.0,1.0,0.0,
+      0.5, -0.5,    0.0,0.0,1.0
+     //-0.5,-0.5,    0.4,0.5,0.6
     ]
     const triangleVertexBuffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexBuffer)
@@ -57,6 +59,8 @@ class Canvas extends React.Component {
     }
     
     const positionAttrLocation = gl.getAttribLocation(program, 'vertPosition')
+    const colorAttrLocation = gl.getAttribLocation(program, 'vertColor')
+
     gl.vertexAttribPointer(
       positionAttrLocation,
       2,
@@ -65,7 +69,17 @@ class Canvas extends React.Component {
       2 * Float32Array.BYTES_PER_ELEMENT,
       0
     )
+    gl.vertexAttribPointer(
+      colorAttrLocation,
+      3,
+      gl.FLOAT,
+      gl.FALSE,
+      5 * Float32Array.BYTES_PER_ELEMENT,
+      2 * Float32Array.BYTES_PER_ELEMENT
+    )
     gl.enableVertexAttribArray(positionAttrLocation)
+    gl.enableVertexAttribArray(colorAttrLocation)
+
 
   
     console.log(Shaders.vertex)
