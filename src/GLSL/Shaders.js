@@ -1,20 +1,19 @@
 const Shaders = {
 vertex:
-`precision mediump float;
-attribute vec2 vertPosition;
-attribute vec3 vertColor;
-varying vec3 fragColor;
+`attribute vec2 a_position;
+//attribute vec4 a_color;
+//varying vec4 v_color;
 void main()
 {
-  fragColor = vertColor;
-  gl_Position = vec4(vertPosition, 0.0, 1.0);
+  gl_Position = vec4(a_position, 0.0, 1.0);
+  //v_color = a_color;
 }`,
 fragment:
 `precision mediump float;
-varying vec3 fragColor;
+//varying vec4 v_color;
 void main()
 {
-  gl_FragColor = vec4(fragColor, 1.0);
+  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }`
 }
 export default Shaders
